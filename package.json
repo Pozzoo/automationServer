@@ -1,0 +1,22 @@
+{
+  "name": "automation-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pozzoo/automationServer.git"
+  },
+  "author": "Pozzoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pozzoo/automationServer/issues"
+  },
+  "homepage": "https://github.com/Pozzoo/automationServer#readme",
+  "description": "",
+  "dependencies": {
+    "dgram": "^1.0.1"
+  }
+}
