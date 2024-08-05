@@ -33,7 +33,9 @@ server.on('error', (err) => {
 server.bind(port);
 
 function handleReceivedMessage(msg, rinfo) {
-    if (!msg.command || !msg.locate) {
+    console.log(`Received message: ${JSON.stringify(msg)}, from: ${rinfo.address}:${rinfo.port}`);
+
+    if (!msg.command) {
         return;
     }
 
@@ -62,6 +64,7 @@ function handleGetSet(msg, rinfo, isSet) {
         return;
     }
 
+    //TODO: CHANGE THIS
     if (isSet) {
         locateStatuses[locates.indexOf(msg.locate)] = !locateStatuses[locates.indexOf(msg.locate)];
     }
@@ -73,5 +76,8 @@ function handleGetSet(msg, rinfo, isSet) {
 }
 
 function handleGetAll(msg, rinfo) {
-    server.send(`${locateStatuses.toString()}`, rinfo.port, rinfo.address);
+
+    locates.forEach(locate => {
+        server.send(`{"locate": "${locate}", "status": "${locateStatuses.at(locates.indexOf(locate))}"}`, rinfo.port, rinfo.address);
+    })
 }
